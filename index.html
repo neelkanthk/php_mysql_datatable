@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Datatable guest list.</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css"/>
+        <link 
+    </head>
+    <body>
+        <h1>Datatable Guest List</h1>
+        <h3>An implementation of Jquery Datatables plugin using core PHP and MySQL</h3>
+        
+        <table id="user_datatable" class="display" style="width:100%">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+        </table>
+        <script>
+            $(document).ready(function () {
+                $('#user_datatable').DataTable({
+                    processing: true,
+                    serverSide: true,
+                    ajax: {
+                        url: "guests.php"
+                    },
+                    columns: [
+                        {data: "id"},
+                        {data: "firstname"},
+                        {data: "lastname"},
+                        {data: "country"}
+                    ]
+                });
+            });
+        </script>
+    </body>
+</html>
